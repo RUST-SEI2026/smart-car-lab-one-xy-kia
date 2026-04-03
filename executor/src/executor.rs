@@ -33,13 +33,17 @@ impl Executor {
     pub fn execute(&mut self, cmds: &str) {
         for cmd in cmds.chars(){
             match cmd{
-                'M' => match self.pose.heading {
+                'M' => match self.pose.heading {//移动
                     'E' => self.pose.x += 1,
                     'W' => self.pose.x -= 1,
                     'N' => self.pose.y += 1,
                     'S' => self.pose.y -= 1,
                     _ => (),
                 },
+                'L' => match self.pose.heading {//左转
+                    'E' => self.pose.heading = 'N',
+                    _ => (),
+                }
                 _ => (),
             }
         }
