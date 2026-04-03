@@ -17,4 +17,17 @@ mod move_tests{
         assert_eq!(expected_pose, executor.query());
         //判断
     }
+    #[test]
+    fn should_return_x_minus_1_given_command_is_m_and_facing_is_w(){
+        //测试w方向下m指令
+        let original_pose = Pose::new(0,0,'W');
+        //初始位置
+        let mut executor = Executor::with_pose(original_pose);
+        executor.execute("M");
+        //移动
+        let expected_pose = Pose::new(-1,0,'W');
+        //预测位置
+        assert_eq!(expected_pose, executor.query());
+        //判断
+    }
 }
