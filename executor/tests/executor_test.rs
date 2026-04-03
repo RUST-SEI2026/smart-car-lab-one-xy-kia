@@ -7,7 +7,7 @@ mod move_tests{
     #[test]
     fn should_return_0_0_n_for_default_initialization(){
         //测试默认初始化的位置和方向
-        let mut executor = Executor::new();
+        let executor = Executor::new();
         //初始化
         let expected_pose = Pose::new(0,0,'N');
         //预测位置
@@ -178,6 +178,20 @@ mod move_tests{
         executor.execute("R");
         //转向
         let expected_pose = Pose::new(0,0,'E');
+        //预测位置
+        assert_eq!(expected_pose, executor.query());
+        //判断
+    }
+
+    #[test]
+    fn should_return_heading_e_and_p5_p4_given_command_is_mmrmmlmmrmmm_and_facing_is_n(){
+        //测试n方向下r指令
+        let original_pose = Pose::new(0,0,'N');
+        //初始位置
+        let mut executor = Executor::with_pose(original_pose);
+        executor.execute("MMRMMLMMRMMM");
+        //转向
+        let expected_pose = Pose::new(5,4,'E');
         //预测位置
         assert_eq!(expected_pose, executor.query());
         //判断
