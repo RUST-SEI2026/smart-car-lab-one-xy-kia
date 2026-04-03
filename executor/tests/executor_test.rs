@@ -101,4 +101,18 @@ mod move_tests{
         assert_eq!(expected_pose, executor.query());
         //判断
     }
+
+    #[test]
+    fn should_return_heading_w_given_command_is_l_and_facing_is_n(){
+        //测试n方向下l指令
+        let original_pose = Pose::new(0,0,'N');
+        //初始位置
+        let mut executor = Executor::with_pose(original_pose);
+        executor.execute("L");
+        //转向
+        let expected_pose = Pose::new(0,0,'W');
+        //预测位置
+        assert_eq!(expected_pose, executor.query());
+        //判断
+    }
 }
