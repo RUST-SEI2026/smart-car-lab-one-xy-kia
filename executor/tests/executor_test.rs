@@ -5,6 +5,17 @@ mod move_tests{
     use super::*;
 
     #[test]
+    fn should_return_0_0_n_for_default_initialization(){
+        //测试默认初始化的位置和方向
+        let mut executor = Executor::new();
+        //初始化
+        let expected_pose = Pose::new(0,0,'N');
+        //预测位置
+        assert_eq!(expected_pose, executor.query());
+        //判断
+    }
+
+    #[test]
     fn should_return_x_plus_1_given_command_is_m_and_facing_is_e(){
         //测试e方向下m指令
         let original_pose = Pose::new(0,0,'E');
