@@ -30,6 +30,10 @@ impl Executor {
         Executor { pose }
     }
 
+    pub fn new() -> Self {
+        Self::with_pose(Pose::default())
+    }
+
     pub fn execute(&mut self, cmds: &str) {
         for cmd in cmds.chars(){
             match cmd{
