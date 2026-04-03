@@ -49,6 +49,7 @@ impl Executor {
                 }
                 'R' => match self.pose.heading {//右转
                     'E' => self.pose.heading = 'S',
+                    'S' => self.pose.heading = 'W',
                     _ => (),
                 }
                 _ => (),
